@@ -1,16 +1,17 @@
 require "sinatra"
 require "sinatra/reloader"
 
+before do
+  @toc = File.readlines("data/toc.txt")
+end
+
 get "/" do
   @title = "The Adventures of Sherlock Holmes"
-  @toc = File.readlines("data/toc.txt")
 
   erb :home
 end
 
 get "/chapters/:number" do
-  @toc = File.readlines("data/toc.txt")
-
   number = params[:number].to_i
   chapter_name = @toc[number - 1]
   @title = "Chapter #{number}: #{chapter_name}"
