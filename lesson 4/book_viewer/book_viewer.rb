@@ -32,3 +32,7 @@ end
 get "/show/:name" do 
   params[:name]
 end
+
+not_found do
+  redirect "/"
+end
