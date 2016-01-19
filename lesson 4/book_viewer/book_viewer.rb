@@ -1,6 +1,14 @@
 require "sinatra"
 require "sinatra/reloader"
 
+helpers do
+  def in_paragraphs(content)
+    content.split("\n\n").map do |line|
+      "<p>#{line}</p>"
+    end.join
+  end
+end
+
 before do
   @toc = File.readlines("data/toc.txt")
 end
