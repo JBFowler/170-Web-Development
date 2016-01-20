@@ -29,5 +29,6 @@ end
 # Create a new list form
 post "/lists" do
   session[:lists] << { name: params[:list_name], todos: [] }
+  session[:success] = "The list hash been created."
   redirect "/lists"
 end
